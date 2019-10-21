@@ -25,7 +25,7 @@ function Navigation() {
     <>
       <Nav>
         <div>
-          <Link to="/trips">Trips</Link>
+          <Link to="/">Trips</Link>
         </div>
         <div>
           <Link to="/people">People</Link>
