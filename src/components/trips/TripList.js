@@ -4,17 +4,16 @@ import TripCard from "./TripCard";
 import { Link } from "react-router-dom";
 
 function TripList(props) {
-  
   const TripListDiv = styled.div`
     margin: 0 auto;
-    padding: 2rem 0;
+    padding: 1rem 0;
     width: 100%;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
   `;
-  
+
   return (
     <>
       <TripListDiv>

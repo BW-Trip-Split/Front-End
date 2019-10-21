@@ -3,6 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 
 import { testdata } from "../../data/data";
+import Transaction from "./Transaction";
 
 function TripDetails(props) {
   const HeaderDiv = styled.div`
@@ -25,7 +26,7 @@ function TripDetails(props) {
 
   const TripDetailsDiv = styled.div`
     margin: 0 auto;
-    padding: 2rem 0;
+    padding: 1rem 0;
     width: 100%;
     display: flex;
     flex-flow: column;
@@ -33,7 +34,7 @@ function TripDetails(props) {
     align-items: center;
   `;
 
-  const [trip, setTrip] = useState("");
+  const [trip, setTrip] = useState({});
 
   // useEffect(() => {
   //   const id = props.match.params.id;
@@ -56,24 +57,35 @@ function TripDetails(props) {
     setTrip(testdata[id]);
   }, [props.match.params.id]);
 
-  console.log(trip);
+  if(trip.transactions != undefined)
+  console.log("Transmissions", trip.transactions[0]);
+
+  if(trip.transactions == undefined){
+    return (
+      <div>Loading...</div>
+    );
+  }
+  else if(trip.transactions != undefined){
   return (
     <>
       <HeaderDiv>
-        <div> <h2>Transactions</h2></div>
-        <div><h3>{trip.name}</h3></div>
+        <div>
+          {" "}
+          <h2>Transactions</h2>
+        </div>
+        <div>
+          <h3>{trip.name}</h3>
+        </div>
       </HeaderDiv>
 
       <TripDetailsDiv>
-       
-        <span>Started: {trip.created}</span>
-        <br />
-        <span>Members: {trip.members}</span>
-        <br />
-        <span>Spent: {trip.amountspent}</span>
+        {trip.transactions.map((element, index) => (
+          <Transaction key={index} transaction={element}/>
+        ))}
       </TripDetailsDiv>
     </>
   );
+}
 }
 
 export default TripDetails;
