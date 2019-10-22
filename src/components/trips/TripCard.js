@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { Link } from "react-router-dom";
+import TimeAgo from "react-timeago";
 
 const Card = styled.div`
   width: 35%;
@@ -42,9 +43,8 @@ const Card = styled.div`
     margin: 0;
     padding: 0;
     display: flex;
-    
+
     width: 100%;
-    
   }
 
   span {
@@ -141,22 +141,22 @@ function TripCard(props) {
     minimumFractionDigits: 0
   });
 
-  const amount = formatter.format(props.trip.amountspent);
+  const amount = formatter.format(props.trip.base_cost);
 
   if (!props.isPast) {
     return (
       <Card>
-        <Link to={`trips/${props.tripID}`}>
-
+        <Link to={{ pathname: `trips/${props.trip.id}`, state: { name: 'bar'} }}>
           <img src={props.trip.img} alt={props.trip.title} />
 
           <CardInfo>
             <TripTitle>{props.trip.name}</TripTitle>
-            <span>Since {props.trip.created}</span>
+            <span>
+              Started <TimeAgo date={props.trip.date} />
+            </span>
             <span>{props.trip.members} people</span>
             <span style={{ color: "green" }}>{amount} spent</span>
           </CardInfo>
-
         </Link>
         <Buttons>
           <button>
@@ -175,7 +175,7 @@ function TripCard(props) {
           <img src={props.trip.img} alt={props.trip.title} />
           <CardInfo>
             <TripTitle>{props.trip.name}</TripTitle>
-            <span>{props.trip.created}</span>
+            <span>{props.trip.date}</span>
           </CardInfo>
           <span style={{ color: "green", paddingRight: "1rem" }}>{amount}</span>
         </Link>

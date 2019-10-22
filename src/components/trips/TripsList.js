@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-// eslint-disable-next-line
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 // eslint-disable-next-line
 import axios from "axios";
 import TripCard from "./TripCard";
-
+// eslint-disable-next-line
 import { testdata, pasttrips } from "../../data/data";
 
 //https://tripsplitr.herokuapp.com/
@@ -41,21 +39,22 @@ function TripsList() {
   // eslint-disable-next-line
   const [pastTrips, setPastTrips] = useState([]);
 
-  // useEffect(() => {
-  //     axios
-  //     .get("https://tripsplitr.herokuapp.com/")
-  //     .then(response => {
-  //         console.log(response);
-  //     })
-  //     .catch(error => {
-  //         console.log("ERROR", error);
-  //     })
-  // }, [])
-
   useEffect(() => {
-    setCurrentTrips(testdata);
-    setPastTrips(pasttrips);
+    axios
+      .get("https://tripsplitr.herokuapp.com/trips")
+      .then(response => {
+        setCurrentTrips(response.data);
+      })
+      .catch(error => {
+        console.log("ERROR", error);
+      });
   }, []);
+
+  /***************** DUMMY DATA  *******************/
+  // useEffect(() => {
+  //   setCurrentTrips(testdata);
+  //   setPastTrips(pasttrips);
+  // }, []);
 
   return (
     <>
@@ -80,7 +79,7 @@ function CurrentTrips(props) {
     <>
       <TripListDiv>
         {props.currentTrips.map((element, index) => (
-          <TripCard key={index} trip={element} tripID={index} isPast={false}/>
+          <TripCard key={index} trip={element} isPast={false} />
         ))}
       </TripListDiv>
     </>
@@ -92,7 +91,7 @@ function PastTrips(props) {
     <>
       <TripListDiv>
         {props.pastTrips.map((element, index) => (
-          <TripCard key={index} trip={element} tripID={index} isPast={true}/>
+          <TripCard key={index} trip={element} isPast={true} />
         ))}
       </TripListDiv>
     </>

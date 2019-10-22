@@ -46,7 +46,6 @@ function Transaction(props) {
 
   
 
-  console.log(props.tripID);
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -54,13 +53,13 @@ function Transaction(props) {
     minimumFractionDigits: 0
   });
 
-  const amount = formatter.format(props.transaction.amount);
+  const amount = formatter.format(props.transaction.total_expense_price);
 
   return (
     <TransactionDiv>
       <Info>
-        <h5>{props.transaction.title}</h5>
-        <span>{props.transaction.owner} shared with {props.transaction.shared.length} others.</span>
+        <h5>{props.transaction.expense_name}</h5>
+        <span>Expense made by {props.transaction.primary_paid}</span>
       </Info>
       <Amount>{amount}</Amount>
     </TransactionDiv>
