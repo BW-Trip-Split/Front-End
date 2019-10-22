@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import TimeAgo from "react-timeago";
 
 const Card = styled.div`
-  width: 35%;
+  width: 55%;
   background-color: #ffffff;
   display: flex;
   flex-flow: row nowrap;
@@ -14,23 +14,44 @@ const Card = styled.div`
   box-shadow: 0 1px 6px -2px #000;
   // max-height: 128px;
 
-  @media (max-width: 1200px) {
-    width: 40%;
+  img {
+    max-width: 256px;
+    margin-right: 10px;
+    height: 256px;
+    display: block;
   }
 
-  @media (max-width: 800px) {
-    width: 70%;
+  span {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 1200px) {
+    width: 60%;
+  }
+
+  @media (max-width: 900px) {
+    width: 85%;
+  }
+
+  @media (max-width: 750px) {
+    width: 85%;
+
+    img {
+      max-width: 128px;
+      height: 128px;
+    }
+    span {
+      font-size: 0.8rem;
+    }
   }
 
   @media (max-width: 500px) {
     width: 100%;
-  }
 
-  img {
-    max-width: 128px;
-    margin-right: 10px;
-    height: 128px;
-    display: block;
+    img {
+      max-width: 128px;
+      height: 128px;
+    }
   }
 
   h3 {
@@ -45,10 +66,6 @@ const Card = styled.div`
     display: flex;
 
     width: 100%;
-  }
-
-  span {
-    font-size: 0.8rem;
   }
 `;
 
@@ -146,7 +163,7 @@ function TripCard(props) {
   if (!props.isPast) {
     return (
       <Card>
-        <Link to={{ pathname: `trips/${props.trip.id}`, state: { name: 'bar'} }}>
+        <Link to={{ pathname: `trips/${props.trip.id}`, state: { name: "bar" } }}>
           <img src={props.trip.img} alt={props.trip.title} />
 
           <CardInfo>

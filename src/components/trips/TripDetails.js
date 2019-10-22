@@ -90,9 +90,9 @@ function TripDetails(props) {
 
   const amount = formatter.format(trip.base_cost);
 
-  if ((experiences === null || experiences === undefined) && (trip === null || trip === undefined)) {
+  if (typeof experiences == "undefined") {
     return <div>Loading...</div>;
-  } else if ((experiences !== null || experiences !== undefined) && (trip !== null || trip !== undefined)) {
+  } else if (typeof experiences != "undefined") {
     return (
       <>
         <HeaderDiv>
