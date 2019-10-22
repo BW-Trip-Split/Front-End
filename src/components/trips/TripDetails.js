@@ -43,17 +43,40 @@ const TripDetailsDiv = styled.div`
   align-items: center;
 `;
 
+const AddExpenseButton = styled.div`
+  border: 0;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.28);
+  background-color: #183c56;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  position: fixed;
+  bottom: 30px;
+  left: 90%;
+  margin-left: -30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  i {
+    font-size: 24px;
+  }
+`;
+
 function TripDetails(props) {
   const [trip, setTrip] = useState({});
   const [experiences, setExperiences] = useState([]);
   const [id, setId] = useState();
 
+  // eslint-disable-next-line
+  const addExpense = () => {
+    console.log("Add Expense Button clicked");
+  };
+
   useEffect(() => {
     const id = props.match.params.id;
     setId(id);
-    // const id = 8;
-    // change ^^^ that line and grab the id from the URL
-    // You will NEED to add a dependency array to this effect hook
     axios
       .get(`https://tripsplitr.herokuapp.com/expenses/`)
       .then(response => {
@@ -75,12 +98,6 @@ function TripDetails(props) {
       });
   }, [id]);
 
-  // useEffect(() => {
-  //   const id = props.match.params.id;
-  //   console.log("Params ID is: " + props.match.params.id, "ID is: " + id);
-  //   setTrip(testdata[id]);
-  //   console.log("Logging trip: ", trip);
-  // }, [props.match.params.id]);
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -117,6 +134,10 @@ function TripDetails(props) {
             <Transaction key={index} transaction={element} />
           ))} */}
         </TripDetailsDiv>
+
+        <AddExpenseButton onClick={event => addExpense()}>
+          <i className="fas fa-plus fa-2x"></i>
+        </AddExpenseButton>
       </>
     );
   }
