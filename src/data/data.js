@@ -28,15 +28,47 @@ export const testdata = [
     members: 2,
     amountspent: 1490,
     img:
-      "https://images.unsplash.com/photo-1531872998053-adba85a5bc4d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+      "https://images.unsplash.com/photo-1531872998053-adba85a5bc4d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      transactions: [
+        {
+          title: "Tour Guide",
+          owner: "Hugo",
+          shared: ["Jaytee"],
+          amount: 50.0,
+          date: "10/20/2019"
+        },
+        {
+          title: "Hiking gear",
+          owner: "Hugo",
+          shared: ["Jaytee"],
+          amount: 176.0,
+          date: "10/20/2019"
+        }
+      ]
   },
   {
-    name: "Greece EF",
+    name: "Greece With Boiz",
     created: "07/26/2019",
-    members: 5,
+    members: 9,
     amountspent: 5200,
     img:
-      "https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+      "https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      transactions: [
+        {
+          title: "Bar Craziness",
+          owner: "Hugo",
+          shared: ["Shane", "Ryan", "Falmata", "Jaytee"],
+          amount: 200.0,
+          date: "10/20/2019"
+        },
+        {
+          title: "Sunset Boat Trip",
+          owner: "Shane",
+          shared: ["Jaytee", "Ryan", "Adam", "Hugo", "Richard", "Falmata", "Daniel", "Adam"],
+          amount: 250.0,
+          date: "10/20/2019"
+        }
+      ]
   }
 ];
 

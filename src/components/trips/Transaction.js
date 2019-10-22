@@ -1,20 +1,50 @@
 import React from "react";
 import styled from "styled-components";
 
-function Transaction(props) {
-  const TransactionDiv = styled.div`
-    width: 100%;
+const TransactionDiv = styled.div`
     display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
 
-    flex-flow: column;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24);
-    padding: 10px;
-    div {
-      display: flex;
-      justify-content: space-between;
-      padding: 0 1rem;
+
+    width: 100%;
+    padding: 10px 30px;
+
+    div{
+      // border: 1px solid red;
+    }
+    
+  `;
+
+  const Info = styled.div`
+    width: 100%;
+    text-align: start;
+
+
+    h5 {
+      font-weight: 700;
+      margin: 0;
+    }
+
+    span{
+      font-size: .9rem;
+      font-style: italic;
     }
   `;
+
+  const Amount = styled.div`
+    color: green;
+    width: 10%;
+    align-self: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+  `;
+
+function Transaction(props) {
+
+
+  
 
   console.log(props.tripID);
 
@@ -28,13 +58,11 @@ function Transaction(props) {
 
   return (
     <TransactionDiv>
-      <div>
-        <div>{props.transaction.title}</div>
-        <div style={{color: "green"}}>{amount}</div>
-      </div>
-      <div>
-        <div>{props.transaction.owner} shared with {props.transaction.shared.length} others.</div>
-      </div>
+      <Info>
+        <h5>{props.transaction.title}</h5>
+        <span>{props.transaction.owner} shared with {props.transaction.shared.length} others.</span>
+      </Info>
+      <Amount>{amount}</Amount>
     </TransactionDiv>
   );
 }
