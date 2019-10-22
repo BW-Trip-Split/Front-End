@@ -41,7 +41,10 @@ const Card = styled.div`
     color: black;
     margin: 0;
     padding: 0;
-    display: block;
+    display: flex;
+    
+    width: 100%;
+    
   }
 
   span {
@@ -68,14 +71,14 @@ const Buttons = styled.div`
   padding: 10px;
   display: flex;
   flex-flow: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
 
   button {
     border: 0;
     // padding: 5px 0;
     margin: 5px 0;
-    color: #183c56;
+    color: #f6bd60;
     background-color: #ffffff;
 
     :hover {
@@ -90,7 +93,7 @@ const PastCard = styled.div`
   display: flex;
   flex-flow: row nowrap;
   padding: 0;
-  margin: .75rem 1rem;
+  margin: 0.75rem 1rem;
   box-shadow: 0 1px 6px -2px #000;
   // max-height: 128px;
 
@@ -144,16 +147,17 @@ function TripCard(props) {
     return (
       <Card>
         <Link to={`trips/${props.tripID}`}>
+
           <img src={props.trip.img} alt={props.trip.title} />
-        </Link>
-        <CardInfo>
-          <Link to={`trips/${props.tripID}`}>
+
+          <CardInfo>
             <TripTitle>{props.trip.name}</TripTitle>
-          </Link>
-          <span>Since {props.trip.created}</span>
-          <span>{props.trip.members} people</span>
-          <span style={{ color: "green" }}>{amount} spent</span>
-        </CardInfo>
+            <span>Since {props.trip.created}</span>
+            <span>{props.trip.members} people</span>
+            <span style={{ color: "green" }}>{amount} spent</span>
+          </CardInfo>
+
+        </Link>
         <Buttons>
           <button>
             <i className="fas fa-edit"></i>
@@ -169,9 +173,10 @@ function TripCard(props) {
       <PastCard>
         <Link to={`trips/${props.tripID}`}>
           <img src={props.trip.img} alt={props.trip.title} />
-<CardInfo>
-          <TripTitle>{props.trip.name}</TripTitle>
-          <span>{props.trip.created}</span></CardInfo>
+          <CardInfo>
+            <TripTitle>{props.trip.name}</TripTitle>
+            <span>{props.trip.created}</span>
+          </CardInfo>
           <span style={{ color: "green", paddingRight: "1rem" }}>{amount}</span>
         </Link>
       </PastCard>

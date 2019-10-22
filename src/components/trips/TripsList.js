@@ -60,7 +60,7 @@ function TripsList() {
   return (
     <>
       <HeaderDiv>
-        <h2>Trip List</h2>
+        <h2>Current Trips</h2>
       </HeaderDiv>
 
       <CurrentTrips currentTrips={currentTrips} />
