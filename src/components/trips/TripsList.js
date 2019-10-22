@@ -150,7 +150,8 @@ function TripsList() {
       .post("https://tripsplitr.herokuapp.com/trips", {
         name: trip.name,
         date: trip.date,
-        img: trip.img
+        img: trip.img,
+        complete: 0,
       })
       .then(function(response) {
         getTripData();

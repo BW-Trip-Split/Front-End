@@ -25,6 +25,7 @@ function App() {
       <Route path="/people" component={People} />
       <Route path="/transactions" component={Transactions} />
       <Route path="/trips/:id" render={props => <TripDetails {...props} />} />
+      <Route path="/login" component={TripsList}/>
     </div>
   );
 }
