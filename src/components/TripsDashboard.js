@@ -1,18 +1,19 @@
-import React, {useEffect} from 'react';
-import { Link ,Route} from 'react-router-dom';
-import {CurrentTripCard, PastTripCard} from './TripCard';
-import {getTripsByUserId} from '../actions/actions.js';
-import '../styles/TripsDashboard.scss';
-import {Button} from './Buttons.js';
-import Navigation from './Navigation'
+import React, { useState, useEffect } from "react";
+import { Link, Route } from "react-router-dom";
+import { CurrentTripCard, PastTripCard } from "./TripCard";
+import { getTripsByUserId } from "../actions/actions.js";
+import "../styles/TripsDashboard.scss";
+import { Button } from "./Buttons.js";
+import Navigation from "./Navigation";
 import TripsList from "./TripsList";
 import People from "./People";
 import Transactions from "./Transactions";
- import TripDetails from "./TripDetails";
- import styled from "styled-components";
+import TripDetails from "./TripDetails";
+import styled from "styled-components";
+import PeopleForm from "./PeopleForm";
 
 //for Redux #####################################################################
-import {connect} from 'react-redux'
+import { connect } from "react-redux";
 //###############################################################################
 
 const HeaderDiv = styled.div`
@@ -42,7 +43,7 @@ const TripListDiv = styled.div`
 
   // border: 1px solid red;
 
-  a{
+  a {
     width: 45%;
 
     @media (max-width: 1200px) {
@@ -86,50 +87,59 @@ const AddTripButton = styled.button`
 
 function TripsDashboard(props) {
 
-  useEffect(()=>{
-    const user_id = localStorage.getItem('user_id')
-    props.getTripsByUserId(user_id)
-  }, [props.getTripsTrigger])
+  const [toggleFormDisplay, setFormDisplay] = useState(false);
+
+  useEffect(() => {
+    const user_id = localStorage.getItem("user_id");
+    props.getTripsByUserId(user_id);
+  }, [props.getTripsTrigger]);
 
   const logOut = e => {
-    e.preventDefault()
+    e.preventDefault();
     localStorage.clear();
     window.location.reload();
-}
-   
-    return (
-      // <div className="dashboard">
-      <>
-        
-        
-        <HeaderDiv>
+  };
+
+  const toggleForm = () => {
+    console.log("Add Trip Button clicked");
+    setFormDisplay(!toggleFormDisplay);
+  }
+
+  console.log("TOGGLEFORMDISPLAY", toggleFormDisplay);
+  return (
+    // <div className="dashboard">
+    <>
+      <HeaderDiv>
         <h2>Current Trips</h2>
       </HeaderDiv>
 
-        {/* <button onClick={e => logOut(e)}>Logout</button> */}
-        
+      {/* <button onClick={e => logOut(e)}>Logout</button> */}
 
-        <Link to="/people-form">
-          <AddTripButton><i className="fas fa-plus fa-2x"></i></AddTripButton>
-        </Link>
-        
-          <TripListDiv>
-          {props.openTrips.map(trip => {
-            return (
-              <Link
-                key={Math.random()}
-                to={{
-                  pathname: `/trip/${trip.trip_id}`,
-                  state: { trip: trip }
-                }}
-              >
-                <CurrentTripCard trip={trip} />
-              </Link>
-            );
-          })}
-          </TripListDiv>
+      {/* <Link to="/people-form"> */}
+    <PeopleForm toggleFormDisplay={toggleFormDisplay}/>
+      {/* <PeopleForm style={{ display: toggleFormDisplay ? "block !important" : "none" }}/> */}
+      <AddTripButton onClick={event => toggleForm()}>
+        <i className="fas fa-plus fa-2x"></i>
+      </AddTripButton>
+      {/* </Link> */}
 
-        {/* <h2>Past Trips</h2>
+      <TripListDiv>
+        {props.openTrips.map(trip => {
+          return (
+            <Link
+              key={Math.random()}
+              to={{
+                pathname: `/trip/${trip.trip_id}`,
+                state: { trip: trip }
+              }}
+            >
+              <CurrentTripCard trip={trip} />
+            </Link>
+          );
+        })}
+      </TripListDiv>
+
+      {/* <h2>Past Trips</h2>
 
           {props.closedTrips.map((trip)=> {
             return ( 
@@ -138,22 +148,24 @@ function TripsDashboard(props) {
               </Link>
             )
           })} */}
-      </>
-    );
-} 
-
+    </>
+  );
+}
 
 //for Redux #######################################################################
-function mapStateToProps(state){
+function mapStateToProps(state) {
   return {
     trips: state.trips,
     closedTrips: state.closedTrips,
     openTrips: state.openTrips,
-    getTripsTrigger: state.getTripsTrigger,
-  }
+    getTripsTrigger: state.getTripsTrigger
+  };
 }
 
-export default connect(mapStateToProps, {getTripsByUserId})(TripsDashboard);
+export default connect(
+  mapStateToProps,
+  { getTripsByUserId }
+)(TripsDashboard);
 //###############################################################################
 
 //1 --> import { connect }
