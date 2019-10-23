@@ -22,16 +22,29 @@ const Title = styled.div`
   text-align: start;
   padding: 10px 30px;
 
+  @media (max-width: 500px) {
+    width: 0;
+    padding: 0;
+    margin: 0;
+    display: none;
+  }
+
   h1 {
     margin: 0;
     padding: 0;
   }
+
+  @media();
 `;
 const Nav = styled.div`
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 
   div {
     margin: 1rem;
@@ -46,10 +59,10 @@ const Nav = styled.div`
 
 function Navigation() {
   const logOut = e => {
-    e.preventDefault()
+    e.preventDefault();
     localStorage.clear();
     window.location.reload();
-}
+  };
 
   return (
     <Header>
@@ -66,9 +79,7 @@ function Navigation() {
         <div>
           <Link to="/transactions">Transactions</Link>
         </div>
-        <div onClick={e => logOut(e)}>
-          Logout
-        </div>
+        <div onClick={e => logOut(e)}>Logout</div>
       </Nav>
     </Header>
   );

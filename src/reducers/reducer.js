@@ -31,6 +31,7 @@ let defaultState = {
             user_id: null,
             trip_date: "",
             trip_destination: "",
+            trip_img: "",
             people: [
                 {
                     id: null,

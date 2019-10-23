@@ -113,6 +113,7 @@ trips = [
         user_id: id,
         trip_date: string,
         trip_destination: string,
+        trip_img: string,
         people: [
             {
                 id: id,

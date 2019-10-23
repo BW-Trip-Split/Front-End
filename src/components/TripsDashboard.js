@@ -25,10 +25,13 @@ const HeaderDiv = styled.div`
 
   h2 {
     margin: 0;
+    font-size: 1.4rem;
+    text-align: center;
   }
 
   h3 {
     margin: 0;
+    
   }
 `;
 
@@ -45,13 +48,14 @@ const TripListDiv = styled.div`
 
   a {
     width: 45%;
+    color: black;
 
     @media (max-width: 1200px) {
       width: 60%;
     }
 
     @media (max-width: 900px) {
-      width: 85%;
+      width: 70%;
     }
 
     @media (max-width: 750px) {
@@ -74,11 +78,13 @@ const AddTripButton = styled.button`
   border-radius: 100%;
   position: fixed;
   bottom: 30px;
-  left: 90%;
+  // left: 90%;
+  right: 30px;
   margin-left: -30px;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 
   i {
     font-size: 24px;
@@ -116,7 +122,7 @@ function TripsDashboard(props) {
       {/* <button onClick={e => logOut(e)}>Logout</button> */}
 
       {/* <Link to="/people-form"> */}
-    <PeopleForm toggleFormDisplay={toggleFormDisplay}/>
+    <PeopleForm toggleFormDisplay={toggleFormDisplay} toggleForm={toggleForm}/>
       {/* <PeopleForm style={{ display: toggleFormDisplay ? "block !important" : "none" }}/> */}
       <AddTripButton onClick={event => toggleForm()}>
         <i className="fas fa-plus fa-2x"></i>

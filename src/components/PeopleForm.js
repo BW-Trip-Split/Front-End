@@ -15,6 +15,9 @@ function PeopleForm(props) {
     person4: "",
     person5: ""
   });
+  const [date, setDate] = useState("");
+  const [img, setImg] = useState("");
+
 
   const handleChange = event => {
     setTrip(event.target.value);
@@ -22,6 +25,14 @@ function PeopleForm(props) {
 
   const handlePeopleChange = event => {
     setPeople({ ...people, [event.target.name]: event.target.value });
+  };
+
+  const handleDateChange = event => {
+    setDate(event.target.value);
+  };
+
+  const handleImgChange = event => {
+      setImg(event.target.value);
   };
 
   const handleSubmit = event => {
@@ -42,16 +53,24 @@ function PeopleForm(props) {
     let tripObj = {
       trip_name: trip,
       trip_destination: "Planet Earth",
-      trip_date: moment().format("MMM Do YY"),
+      //   trip_date: moment().format("MMM Do YY"),
+      trip_date: date,
       trip_opened: true,
       peoples: filteredPeoplesArray
     };
     props.postTrip(tripObj);
 
-    setPeople({ person1: "", person2: "", person3: "", person4: "", person5: "" });
+    setPeople({ person1: "", person2: "", person3: "", person4: "", person5: "", person6: "" });
     setTrip("");
-    props.history.push("/");
+    setDate("");
+    setImg("");
+    props.toggleForm();
+    // props.history.push("/");
+    
   };
+
+  console.log("PROPS HISTORY", props.history)
+
   return (
     <div className="new-trip" style={{ display: props.toggleFormDisplay ? "block" : "none" }}>
       <div className="new-trip-inner">
@@ -62,33 +81,52 @@ function PeopleForm(props) {
         <div className="form-content">
           <Form className="trip-form" onSubmit={handleSubmit}>
             <Form.Field>
-              <label>Trip Name</label>
+              {/* <label>Trip Name</label> */}
               <input placeholder="Trip Name" name="trip" value={trip} onChange={handleChange} />
             </Form.Field>
+
             <Form.Field>
-              <label>Name 1</label>
-              <input placeholder="Name" name="person1" value={people.person1} onChange={handlePeopleChange} />
+              {/* <label>Trip Date</label> */}
+              <input placeholder="Start Date" name="date" value={date} onChange={handleDateChange} />
             </Form.Field>
 
             <Form.Field>
-              <label>Name 2</label>
-              <input placeholder="Name" name="person2" value={people.person2} onChange={handlePeopleChange} />
+              {/* <label>Trip Image</label> */}
+              <input placeholder="Trip Image" name="img" value={img} onChange={handleImgChange} />
             </Form.Field>
 
-            <Form.Field>
-              <label>Name 3</label>
-              <input placeholder="Name" name="person3" value={people.person3} onChange={handlePeopleChange} />
-            </Form.Field>
+            <div className="friends">
+              <Form.Field>
+                {/* <label>Name 1</label> */}
+                <input placeholder="Fellow Traveler" name="person1" value={people.person1} onChange={handlePeopleChange} />
+              </Form.Field>
 
-            <Form.Field>
-              <label>Name 4</label>
-              <input placeholder="Name" name="person4" value={people.person4} onChange={handlePeopleChange} />
-            </Form.Field>
+              <Form.Field>
+                {/* <label>Name 2</label> */}
+                <input placeholder="Fellow Traveler" name="person2" value={people.person2} onChange={handlePeopleChange} />
+              </Form.Field>
 
-            <Form.Field>
-              <label>Name 5</label>
-              <input placeholder="Name" name="person5" value={people.person5} onChange={handlePeopleChange} />
-            </Form.Field>
+              <Form.Field>
+                {/* <label>Name 3</label> */}
+                <input placeholder="Fellow Traveler" name="person3" value={people.person3} onChange={handlePeopleChange} />
+              </Form.Field>
+
+              <Form.Field>
+                {/* <label>Name 4</label> */}
+                <input placeholder="Fellow Traveler" name="person4" value={people.person4} onChange={handlePeopleChange} />
+              </Form.Field>
+
+              <Form.Field>
+                {/* <label>Name 5</label> */}
+                <input placeholder="Fellow Traveler" name="person5" value={people.person5} onChange={handlePeopleChange} />
+              </Form.Field>
+
+              <Form.Field>
+                {/* <label>Name 6</label> */}
+                <input placeholder="Fellow Traveler" name="person6" value={people.person6} onChange={handlePeopleChange} />
+              </Form.Field>
+            </div>
+
             <Button>Submit</Button>
           </Form>
         </div>
