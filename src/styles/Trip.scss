@@ -1,0 +1,13 @@
+@import './variables.scss';
+
+.trip-container{
+    background: $blue;
+
+    .expense-cards{
+        max-width: 500px;
+        margin: auto;
+        // background: $blue;
+        display: flex;
+        flex-wrap: wrap;
+    }
+}

@@ -35,6 +35,7 @@ const Nav = styled.div`
 
   div {
     margin: 1rem;
+    font-size: 1rem;
   }
 
   a {
@@ -44,6 +45,12 @@ const Nav = styled.div`
 `;
 
 function Navigation() {
+  const logOut = e => {
+    e.preventDefault()
+    localStorage.clear();
+    window.location.reload();
+}
+
   return (
     <Header>
       <Title>
@@ -58,6 +65,9 @@ function Navigation() {
         </div>
         <div>
           <Link to="/transactions">Transactions</Link>
+        </div>
+        <div onClick={e => logOut(e)}>
+          Logout
         </div>
       </Nav>
     </Header>

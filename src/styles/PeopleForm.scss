@@ -1,0 +1,10 @@
+@import './variables.scss';
+
+.new-trip{
+    background: $blue;
+
+    .trip-form{
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
