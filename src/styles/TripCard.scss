@@ -40,21 +40,21 @@
     //   height: 256px;
     //   display: block;
     // }
-      .trip-img{
-        width: 128px;
-        height: 128px;
-        // border: 1px solid black;
+    .trip-img {
+      width: 128px;
+      height: 128px;
+      // border: 1px solid black;
 
-        background-image: url("https://images.unsplash.com/photo-1541777750-47555f6eddaf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
-        background-size: cover;
+      background-image: url("https://images.unsplash.com/photo-1541777750-47555f6eddaf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+      background-size: cover;
 
-        @media (max-width: 320px){
-          display: none;
-        }
+      @media (max-width: 320px) {
+        display: none;
       }
+    }
 
     .trip-info {
-      padding: .5rem;
+      padding: 0.5rem;
       width: 100%;
       display: flex;
       flex-flow: column;
@@ -75,6 +75,28 @@
         color: black;
       }
     }
+
+
+    .trip-card-buttons{
+
+      display: flex;
+      flex-flow: column;
+      justify-content: space-between;
+
+      padding: 0;
+      width: 30px;
+
+      button{
+        border: 0;
+        background-color: white;
+        width: 30px;
+        height: 30px;
+        color: $blue;
+        font-size: 1rem;
+
+      }
+    }
+
   }
   .current-trip-card {
     // background: $green;

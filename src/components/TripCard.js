@@ -3,6 +3,7 @@ import { Card } from "semantic-ui-react";
 import "../styles/TripCard.scss";
 
 export function CurrentTripCard(props) {
+
   const totalExpense = trip => {
     let total = 0;
     trip.trip.expense.forEach(expense => {
@@ -11,7 +12,24 @@ export function CurrentTripCard(props) {
     return total;
   };
 
+  const editTrip = e => {
+    console.log("EDIT TRIP EVENT", e);
+    e.stopPropagation();
+    e.preventDefault();
+
+    console.log("EDIT TRIP BUTTON CLICKED");
+  }
+
+  const deleteTrip = e => {
+    console.log("DELETE TRIP EVENT", e);
+    e.stopPropagation();
+    e.preventDefault();
+
+    console.log("DELETE TRIP BUTTON CLICKED");
+  }
+
   console.log("TRIP CARD DATA", props.trip);
+
   return (
     <div className="card-container">
       <div className="trip-card current-trip-card">
@@ -24,6 +42,14 @@ export function CurrentTripCard(props) {
           <span>{props.trip.people.length + 1} members</span>
           <br/>
           <span style={{color: "green"}}>${totalExpense(props)}</span>
+        </div>
+        <div className="trip-card-buttons">
+          <button onClick={e => editTrip(e)}>
+            <i className="fas fa-edit"></i>
+          </button>
+          <button onClick={e => deleteTrip(e)}>
+            <i className="fas fa-trash-alt"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -46,6 +72,7 @@ export function PastTripCard(props) {
           <Card.Header content={props.trip.trip_name} />
           <Card.Description content={`Total Expenses: $${totalExpense(props)}`} />
         </Card.Content>
+        
       </Card>
     </div>
   );

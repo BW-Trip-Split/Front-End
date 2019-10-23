@@ -1,13 +1,13 @@
+@import "./variables.scss";
 
-
-.expense-card {
+.expense-card-wrap {
   border: 1px solid white;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  width: 50%;
-  margin: .1rem auto;
-  padding: 1rem;
+  width: 100%;
+  margin: 0.1rem auto;
+
   box-shadow: 0 1px 6px -2px #000;
 
   @media (max-width: 1200px) {
@@ -26,28 +26,61 @@
     width: 100%;
   }
 
-  .expense-card-info{
+  .expense-card {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 1rem;
+
+    .expense-card-info {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-  }
+    }
 
-  h4 {
+    h4 {
       font-size: 1.2rem;
-    margin: 0;
-    text-align: start;
-  }
-
-  h5{
       margin: 0;
-      margin-top: .5rem;
-  }
+      text-align: start;
+    }
 
-  span{
+    h5 {
+      margin: 0;
+      margin-top: 0.5rem;
+    }
+
+    span {
       color: green;
       font-size: 1.1rem;
       margin: 0;
       display: flex;
+      justify-content: flex-end;
       align-self: center;
+    }
+  }
+
+  .expense-buttons {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: space-between;
+
+    padding: 0;
+    width: 30px;
+
+    button {
+      border: 0;
+
+      background-color: white;
+      width: 30px;
+      height: 30px;
+      color: $blue;
+      font-size: 1rem;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      text-align: center;
+    }
   }
 }
