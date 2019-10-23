@@ -48,6 +48,13 @@
       padding: 1%;
       border-radius: 4px;
       background: white;
+
+      @media (max-width: 500px) {
+        left: 5%;
+        right: 5%;
+        top: 10%;
+        bottom: 10%;
+      }
   
       display: flex;
       flex-flow: column;

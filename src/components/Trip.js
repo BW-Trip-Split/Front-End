@@ -130,7 +130,6 @@ function Trip(props) {
         </div>
       </HeaderDiv>
       <div className="trip-container">
-        
         <ExpenseForm
           toggleExpenseForm={toggleExpenseForm}
           formToggle={formToggle}
@@ -150,12 +149,22 @@ function Trip(props) {
           })}
         </div>
 
-        <AddExpenseButton onClick={() => toggleExpenseForm()}>
+        <AddExpenseButton
+          onClick={() => {
+            toggleExpenseForm();
+            setCalcToggle(false);
+          }}
+        >
           <i className="fas fa-plus fa-2x"></i>
         </AddExpenseButton>
 
         <div className="calculate-section">
-          <CalculateButton onClick={() => setCalcToggle(true)}>
+          <CalculateButton
+            onClick={() => {
+              toggleCalcForm();
+              setFormToggle(false);
+            }}
+          >
             <i className="fas fa-calculator fa-2x"></i>
           </CalculateButton>
         </div>
