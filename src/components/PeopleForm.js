@@ -79,6 +79,7 @@ function PeopleForm(props) {
         </div>
 
         <div className="form-content">
+          
           <Form className="trip-form" onSubmit={handleSubmit}>
             <Form.Field>
               {/* <label>Trip Name</label> */}

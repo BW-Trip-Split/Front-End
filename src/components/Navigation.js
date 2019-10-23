@@ -55,11 +55,18 @@ const Nav = styled.div`
   }
 `;
 
+const LogoutLink = styled.div`
+  :hover{
+    cursor: pointer;
+  }
+`;
+
 function Navigation() {
   const logOut = e => {
     e.preventDefault();
     localStorage.clear();
     window.location.reload();
+    this.props.history.push("/login");
   };
 
   return (
@@ -69,7 +76,7 @@ function Navigation() {
       </Title>
       <Nav>
         <div>
-          <Link to="/">Trips</Link>
+          <Link to="/">Dashboard</Link>
         </div>
         {/* <div>
           <Link to="/people">People</Link>
@@ -77,7 +84,7 @@ function Navigation() {
         <div>
           <Link to="/transactions">Transactions</Link>
         </div> */}
-        <div onClick={e => logOut(e)}>Logout</div>
+        <LogoutLink onClick={e => logOut(e)}>Logout</LogoutLink>
       </Nav>
     </Header>
   );

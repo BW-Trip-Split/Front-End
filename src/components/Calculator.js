@@ -1,6 +1,37 @@
 import React, {useState} from 'react';
 import { connect } from 'react-redux';
 import PeopleCList from './PeopleCList';
+import styled from "styled-components";
+
+const HeaderDiv = styled.div`
+  background-color: #e6e2ff;
+  padding: 10px 30px;
+  color: #333333;
+  text-align: start;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.28);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+
+  h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    
+  }
+`;
+
+const CalcWrapper = styled.div`
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 1rem;
+`;
+
 
 function Calculator(props){
     
@@ -72,13 +103,15 @@ function Calculator(props){
           return friend
         })
         setOwed(owedWithPercentage)
-      }
+      }   
     console.log(owed)
     return(
-        <div>
-            <h1>Calc</h1>
+      <>
+      <HeaderDiv><h2>Calculate Expenses</h2></HeaderDiv>
+        <CalcWrapper>
+            
             <button onClick = {() => props.setCalcToggle(false)}>Done</button>
-            <button onClick = {() => {getTotalCosts()}}>Start</button>
+            <button onClick = {() => {getTotalCosts()}}>Pay Evenly</button>
             <PeopleCList 
                 people = {people} 
                 evenPayment = {evenPayment} 
@@ -86,7 +119,8 @@ function Calculator(props){
                 addingToggle = {addingToggle}
              />
 
-        </div>
+        </CalcWrapper>
+        </>
     )
 }
 

@@ -32,7 +32,6 @@ const HeaderDiv = styled.div`
   h3 {
     font-size: 1.2rem;
     margin: 0;
-    
   }
 `;
 
@@ -97,6 +96,16 @@ function Trip(props) {
   //   }
   //   getTripData()}, [props.match.params.id, props.location.state])
 
+  const toggleExpenseForm = () => {
+    console.log("Add Expense Button clicked");
+    setFormToggle(!formToggle);
+  };
+
+  const toggleCalcForm = () => {
+    console.log("Calculator Button clicked");
+    setCalcToggle(!calcToggle);
+  };
+
   useEffect(() => {
     const user_id = localStorage.getItem("user_id");
     props.getTripsByUserId(user_id);
@@ -110,37 +119,85 @@ function Trip(props) {
         })[0]
       : props.openTrips[0];
 
-  return formToggle ? (
-    <ExpenseForm setFormToggle={setFormToggle} trip={trip} />
-  ) : calcToggle ? (
-    <Calculator setCalcToggle={setCalcToggle} trip_id={parseFloat(props.match.params.id)} />
-  ) : (
+  return (
     <>
       <HeaderDiv>
-        <div><h2>Expenses</h2></div>
-        <div><h3>{trip.trip_name}</h3></div>
+        <div>
+          <h2>Expenses</h2>
+        </div>
+        <div>
+          <h3>{trip.trip_name}</h3>
+        </div>
       </HeaderDiv>
       <div className="trip-container">
         
-        
+        <ExpenseForm
+          toggleExpenseForm={toggleExpenseForm}
+          formToggle={formToggle}
+          setFormToggle={setFormToggle}
+          trip={trip}
+        />
+        <Calculator
+          toggleCalcForm={toggleCalcForm}
+          calcToggle={calcToggle}
+          setCalcToggle={setCalcToggle}
+          trip_id={parseFloat(props.match.params.id)}
+        />
+
         <div className="expense-cards">
           {trip.expense.map(expense => {
             return <ExpenseCard expense={expense} trip={trip} />;
           })}
         </div>
-        
-        
-          <AddExpenseButton onClick={() => setFormToggle(true)}>
+
+        <AddExpenseButton onClick={() => toggleExpenseForm()}>
           <i className="fas fa-plus fa-2x"></i>
-          </AddExpenseButton>
+        </AddExpenseButton>
 
         <div className="calculate-section">
-          <CalculateButton onClick={() => setCalcToggle(true)}><i className="fas fa-calculator fa-2x"></i></CalculateButton>
+          <CalculateButton onClick={() => setCalcToggle(true)}>
+            <i className="fas fa-calculator fa-2x"></i>
+          </CalculateButton>
         </div>
       </div>
     </>
   );
 }
+
+//   return formToggle ? (
+//     <ExpenseForm setFormToggle={setFormToggle} trip={trip} />
+//   ) : calcToggle ? (
+//     <Calculator setCalcToggle={setCalcToggle} trip_id={parseFloat(props.match.params.id)} />
+//   ) : (
+//     <>
+//       <HeaderDiv>
+//         <div>
+//           <h2>Expenses</h2>
+//         </div>
+//         <div>
+//           <h3>{trip.trip_name}</h3>
+//         </div>
+//       </HeaderDiv>
+//       <div className="trip-container">
+//         <div className="expense-cards">
+//           {trip.expense.map(expense => {
+//             return <ExpenseCard expense={expense} trip={trip} />;
+//           })}
+//         </div>
+
+//         <AddExpenseButton onClick={() => setFormToggle(true)}>
+//           <i className="fas fa-plus fa-2x"></i>
+//         </AddExpenseButton>
+
+//         <div className="calculate-section">
+//           <CalculateButton onClick={() => setCalcToggle(true)}>
+//             <i className="fas fa-calculator fa-2x"></i>
+//           </CalculateButton>
+//         </div>
+//       </div>
+//     </>
+//   );
+// }
 
 function mapStateToProps(state) {
   return {

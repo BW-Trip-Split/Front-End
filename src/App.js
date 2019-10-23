@@ -1,5 +1,5 @@
 import React from "react";
-import { Route} from "react-router-dom";
+import { Route } from "react-router-dom";
 import "./App.css";
 import { connect } from "react-redux";
 import { PrivateRoute } from "./utils/PrivateRoute";
@@ -43,79 +43,80 @@ function App(props) {
     props.register(creds);
   };
 
-  const getTest = () => {
-    props.getHome();
-  };
-
-  const getUsersTest = () => {
-    props.getUsers();
-  };
-
-  const getUserTest = () => {
-    props.getUser(2);
-  };
-
-  const updateUserTest = () => {
-    let update = {
-      email: "update@test.com"
-    };
-    props.updateUser(2, update);
-  };
-
-  const deleteUserTest = () => {
-    props.deleteUser(1);
-  };
-
-  const getTripsTest = () => {
-    props.getTrips();
-  };
-
-  // const getTripsByUserIdTest = () => {
-  //   props.getTripsByUserId(1)
+  // const getTest = () => {
+  //   props.getHome()
   // }
 
-  const postTripTest = () => {
-    let tripObj = {
-      trip_name: "Disney Park",
-      trip_destination: "london",
-      trip_date: "20-01-2019",
-      trip_opened: true,
-      peoples: [{ people_name: "tayo alade" }, { people_name: "tayo jojo" }]
-    };
-    props.postTrip(tripObj);
-  };
+  // const getUsersTest = () => {
+  //   props.getUsers()
+  // }
 
-  const getTripTest = () => {
-    props.getTrip(4);
-  };
+  // const getUserTest = () => {
+  //   props.getUser(2)
+  // }
 
-  const postExpenseTest = () => {
-    let expenseObj = {
-      expense_title: "Orange",
-      expense_price: 5,
-      trip_id: 1,
-      expense_members: [{ expense_amount_paid: 3, people_id: 1 }, { expense_amount_paid: 2, people_id: 2 }]
-    };
-    props.postExpense(expenseObj);
-  };
+  // const updateUserTest = () => {
+  //   let update = {
+  //     email: "update@test.com"
+  //   }
+  //   props.updateUser(2, update);
+  // }
 
-  const getTripsByUserIdTest = () => {
-    const user_id = localStorage.getItem("user_id");
-    props.getTripsByUserId(user_id);
-  };
+  // const deleteUserTest = () => {
+  //   props.deleteUser(1)
+  // }
 
-  const logOut = (e) => {
-    e.preventDefault();
-    localStorage.clear();
-    // window.location.reload();
-    this.props.history.push('/login')
-  };
+  // const getTripsTest = () => {
+  //   props.getTrips()
+  // }
+
+  // // const getTripsByUserIdTest = () => {
+  // //   props.getTripsByUserId(1)
+  // // }
+
+  // const postTripTest = () => {
+  //   let tripObj = {
+  //     trip_name: "Disney Park",
+  //     trip_destination: "london",
+  //     trip_date: "20-01-2019",
+  //     trip_opened: true,
+  //     peoples:[
+  //       {people_name:"tayo alade"},
+  //       {people_name: "tayo jojo"}
+  //     ]
+  //    }
+  //   props.postTrip(tripObj)
+  // }
+
+  // const getTripTest = () => {
+  //   props.getTrip(4)
+  // }
+
+  // const postExpenseTest = () => {
+  //   let expenseObj = {
+  //     expense_title: "Orange",
+  //     expense_price: 5,
+  //     trip_id: 1,
+  //     expense_members:[
+  //       {expense_amount_paid: 3,
+  //       people_id: 1},
+  //       {expense_amount_paid: 2,
+  //       people_id: 2}
+  //     ]
+  //   }
+  //   props.postExpense(expenseObj)
+  // }
+
+  // const getTripsByUserIdTest = () => {
+  //   const user_id = localStorage.getItem('user_id')
+  //   props.getTripsByUserId(user_id)
+  // }
 
   return (
     <div className="App">
       {/* <h1>Never Worry About Not Getting Paid Back</h1> */}
-      <Navigation />
 
+<Navigation/>
       <Route path="/login" component={LoginForm} />
       <Route path="/trip/:id" component={Trip} />
       <Route path="/people-form" component={PeopleForm} />
