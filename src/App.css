@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  font-size: 62.5%
+  font-size: 62.5%;
+  height: 100%;
 }
 
 .App-logo {

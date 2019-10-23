@@ -1,13 +1,26 @@
 @import './variables.scss';
 
+
+
 .trip-container{
-    background: $blue;
+    // background: $blue;
+    margin: 1rem;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+
 
     .expense-cards{
-        max-width: 500px;
-        margin: auto;
-        // background: $blue;
-        display: flex;
-        flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: space-between;
+    margin: 1rem 0;
+    margin-bottom: 2rem;
+    
     }
 }

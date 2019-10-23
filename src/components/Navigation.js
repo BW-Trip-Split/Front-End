@@ -17,16 +17,15 @@ const Header = styled.div`
 `;
 
 const Title = styled.div`
-  width: 50%;
+  // width: 50%;
   font-weight: 700;
   text-align: start;
   padding: 10px 30px;
 
   @media (max-width: 500px) {
-    width: 0;
-    padding: 0;
-    margin: 0;
-    display: none;
+    
+    
+    // display: none;
   }
 
   h1 {
@@ -34,7 +33,6 @@ const Title = styled.div`
     padding: 0;
   }
 
-  @media();
 `;
 const Nav = styled.div`
   display: flex;
@@ -43,7 +41,7 @@ const Nav = styled.div`
   align-items: center;
 
   @media (max-width: 500px) {
-    width: 100%;
+    // width: 100%;
   }
 
   div {
@@ -73,12 +71,12 @@ function Navigation() {
         <div>
           <Link to="/">Trips</Link>
         </div>
-        <div>
+        {/* <div>
           <Link to="/people">People</Link>
         </div>
         <div>
           <Link to="/transactions">Transactions</Link>
-        </div>
+        </div> */}
         <div onClick={e => logOut(e)}>Logout</div>
       </Nav>
     </Header>

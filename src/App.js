@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route} from "react-router-dom";
 import "./App.css";
 import { connect } from "react-redux";
 import { PrivateRoute } from "./utils/PrivateRoute";
@@ -104,10 +104,11 @@ function App(props) {
     props.getTripsByUserId(user_id);
   };
 
-  const logOut = e => {
+  const logOut = (e) => {
     e.preventDefault();
     localStorage.clear();
-    window.location.reload();
+    // window.location.reload();
+    this.props.history.push('/login')
   };
 
   return (
