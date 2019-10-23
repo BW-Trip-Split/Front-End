@@ -32,7 +32,7 @@
     justify-content: flex-start;
     padding: 0;
     box-shadow: 0 1px 6px -2px #000;
-    // max-height: 128px;
+    max-height: 128px;
 
     // img {
     //   max-width: 256px;
@@ -43,7 +43,10 @@
       .trip-img{
         width: 128px;
         height: 128px;
-        border: 1px solid black;
+        // border: 1px solid black;
+
+        background-image: url("https://images.unsplash.com/photo-1541777750-47555f6eddaf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+        background-size: cover;
 
         @media (max-width: 320px){
           display: none;

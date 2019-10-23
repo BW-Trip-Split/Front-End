@@ -23,16 +23,26 @@ const Title = styled.div`
   padding: 10px 30px;
 
   @media (max-width: 500px) {
-    
-    
     // display: none;
+    width: 50%;
+  }
+
+  @media (max-width: 320px) {
+    display: none;
   }
 
   h1 {
     margin: 0;
     padding: 0;
+
+    @media (max-width: 500px) {
+      font-size: 1rem;
+    }
   }
 
+  a {
+    color: white;
+  }
 `;
 const Nav = styled.div`
   display: flex;
@@ -42,6 +52,10 @@ const Nav = styled.div`
 
   @media (max-width: 500px) {
     // width: 100%;
+  }
+
+  @media (max-width: 320px) {
+    width: 100%;
   }
 
   div {
@@ -56,7 +70,7 @@ const Nav = styled.div`
 `;
 
 const LogoutLink = styled.div`
-  :hover{
+  :hover {
     cursor: pointer;
   }
 `;
@@ -69,10 +83,14 @@ function Navigation() {
     this.props.history.push("/login");
   };
 
+  let marketingPages = ["https://bw-trip-split.github.io/Marketing-Page/", "https://cmruss.github.io/Marketing-Page/"];
+
   return (
     <Header>
       <Title>
-        <h1>Trip Split</h1>
+        <h1>
+          <a href={marketingPages[0]}>Trip</a> <a href={marketingPages[1]}>Split</a>
+        </h1>
       </Title>
       <Nav>
         <div>
