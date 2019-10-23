@@ -77,7 +77,7 @@ function ExpenseForm(props) {
 
         <Form className="expense-form">
           <Form.Field className="expense-input">
-            <label>Expense</label>
+            <label>Expense Name</label>
             <input
               placeholder="Expense"
               value={amountsPaid.expenseName}

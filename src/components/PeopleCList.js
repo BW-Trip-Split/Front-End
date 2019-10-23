@@ -4,7 +4,7 @@ import Person from './Person';
 function PeopleCList(props){
     return(
         <div>
-            <h1>PeopleList</h1>
+            {/* <h1>PeopleList</h1> */}
             {props.people.map(person => {
                 return(
                     <div key = {Math.random()}>

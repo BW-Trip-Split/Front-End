@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import PeopleCList from "./PeopleCList";
 import styled from "styled-components";
 
+import { Button } from "./Buttons.js";
+
 import "../styles/Calculator.scss";
 
 const HeaderDiv = styled.div`
@@ -121,15 +123,10 @@ function Calculator(props) {
           </div>
 
           <div className="form-content">
-            <button onClick={() => props.setCalcToggle(false)}>Done</button>
-            <button
-              onClick={() => {
-                getTotalCosts();
-              }}
-            >
-              Pay Evenly
-            </button>
             <PeopleCList people={people} evenPayment={evenPayment} owed={owed} addingToggle={addingToggle} />
+
+            {/* <Button onClick={() => props.setCalcToggle(false)}>Done</Button> */}
+            <Button onClick={() => getTotalCosts()}>Pay Evenly</Button>
           </div>
         </div>
       </div>

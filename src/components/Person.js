@@ -4,7 +4,7 @@ import {Component} from 'react';
 import styled from 'styled-components';
 
 const FriendDiv = styled.div`
-    border: solid grey 1px;
+    // border: solid grey 1px;
     border-radius: 5px;
     margin-bottom: 10px;
     padding-bottom: 10px;
@@ -13,7 +13,8 @@ const FriendDiv = styled.div`
 const NameDiv = styled.div`
     height: 35px;
     display: flex;
-    justify-content: center;
+    
+    justify-content: space-between;
     margin-bottom: 10px;
 `;
 
@@ -64,7 +65,7 @@ class Friend extends Component {
         let friendOwes = parseFloat(this.props.evenPayment) - parseFloat(this.props.friend.totalCosts)
         return (
           <FriendDiv>
-            <h4>Your Net Payment:</h4>
+            {/* <h4>Your Net Payment:</h4> */}
             <NameDiv>
               <h3>{this.props.friend.name}</h3>
               <h3>${this.props.evenPayment}</h3>
