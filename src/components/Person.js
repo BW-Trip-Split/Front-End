@@ -63,13 +63,16 @@ class Friend extends Component {
     render() {
         console.log("person props", this.props)
         let friendOwes = parseFloat(this.props.evenPayment) - parseFloat(this.props.friend.totalCosts)
+        let friendOwesPerPayment = this.props.friend.totalCosts.toFixed(2);
         return (
           <FriendDiv>
             {/* <h4>Your Net Payment:</h4> */}
+            
             <NameDiv>
               <h3>{this.props.friend.name}</h3>
-              <h3>${this.props.evenPayment}</h3>
-              
+              {/* <h3>${this.props.evenPayment}</h3> */}
+              {/* <h3>${this.props.friend.totalCosts}</h3>               */}
+              {this.props.ifEven ? <h3>${this.props.evenPayment}</h3> : <h3>${friendOwesPerPayment}</h3>}
             </NameDiv>
             {/* <FiftyFiftyDiv>
               {this.props.addingToggle ? (

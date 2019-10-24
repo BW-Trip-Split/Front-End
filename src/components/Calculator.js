@@ -50,7 +50,9 @@ function Calculator(props) {
   const [totalCosts, setTotalCosts] = useState(null);
   const [addingToggle, setAddingToggle] = useState(true);
   const [evenPayment, setEvenPayment] = useState(null);
+  const [perPersonPayment, setPerPersonPayment] = useState(null);
   const [owed, setOwed] = useState([]);
+  const [ifEven, setIfEven] = useState(false);
 
   const getTotalCosts = e => {
     let total = data.reduce((total, people) => {
@@ -84,11 +86,18 @@ function Calculator(props) {
     console.log("test", total);
     setEvenPayment(evenPaymentt.toFixed(2));
     createOwedList(evenPaymentt);
+    setIfEven(true);
+  };
+
+  const calculatePerPersonPayment = total => {
+    setIfEven(false);
   };
 
   //AVOID COMPILE ERROR; CHECK IF UNDEFINED
+  let people = [];
 
-    let people = data[0].people.map(person => {
+  if (data[0] !== undefined) {
+    people = data[0].people.map(person => {
       return {
         name: person.person_name,
         totalCosts: person.expenses.reduce((total, expense) => {
@@ -96,7 +105,7 @@ function Calculator(props) {
         }, 0)
       };
     });
-  
+  }
 
   console.log("ep", evenPayment);
 
@@ -126,12 +135,30 @@ function Calculator(props) {
           </div>
 
           <div className="form-content">
-            
-            {console.log("People in Calculator",people)}
-            <PeopleCList people={people} evenPayment={evenPayment} owed={owed} addingToggle={addingToggle} />
+
+            {ifEven ? (
+              console.log("SHOWING EVEN PAYMENTS"),
+              <PeopleCList
+                people={people}
+                evenPayment={evenPayment}
+                owed={owed}
+                addingToggle={addingToggle}
+                ifEven={true}
+              />
+            ) : (
+              console.log("SHOWING PER PERSON PAYMENTS"),
+              <PeopleCList
+                people={people}
+                evenPayment={evenPayment}
+                owed={owed}
+                addingToggle={addingToggle}
+                ifEven={false}
+              />
+            )}
 
             {/* <Button onClick={() => props.setCalcToggle(false)}>Done</Button> */}
-            <Button onClick={() => getTotalCosts()}>Pay Evenly</Button>
+            <Button onClick={() => getTotalCosts()}>Pay Evenly</Button>&nbsp;
+            <Button onClick={() => calculatePerPersonPayment()}>Pay Per Person</Button>
           </div>
         </div>
       </div>
