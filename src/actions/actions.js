@@ -41,6 +41,10 @@ export const POSTTRIP_START = 'POSTTRIP_START';
 export const POSTTRIP_SUCCESS = 'POSTTRIP_SUCCESS';
 export const POSTTRIP_FAILURE = 'POSTTRIP_FAILURE';
 
+export const DELETETRIP_START = 'DELETETRIP_START';
+export const DELETETRIP_SUCCESS = 'DELETETRIP_SUCCESS';
+export const DELETETRIP_FAILURE = 'DELETETRIP_FAILURE';
+
 export const POSTEXPENSE_START = 'POSTEXPENSE_START';
 export const POSTEXPENSE_SUCCESS = 'POSTEXPENSE_SUCCESS';
 export const POSTEXPENSE_FAILURE = 'POSTEXPENSE_FAILURE';
@@ -238,6 +242,24 @@ export const postTrip = (tripObj) => dispatch => {
 };
 
 // ^^ returns a message, need trips
+
+
+export const deleteTrip = (trip_id) => dispatch => {
+  dispatch({ type: DELETETRIP_START });
+  axiosAuth()
+     .delete(`https://split-trip-bw.herokuapp.com/api/trips/${trip_id}`)
+    // .delete(`https://tripsplitr.herokuapp.com//users/${id}`)
+
+    .then(res => {
+      console.log("DELETETRIP RES: ", res);
+      dispatch({ type: DELETETRIP_SUCCESS });
+    })
+    .catch(err => {
+      console.log("DELETETRIP ERR: ", err);
+      dispatch({ type: DELETETRIP_FAILURE });
+    });
+};
+
 
 export const postExpense = (expenseObj) => dispatch => {
   dispatch({ type: POSTEXPENSE_START });

@@ -80,7 +80,7 @@ function Navigation() {
     e.preventDefault();
     localStorage.clear();
     window.location.reload();
-    this.props.history.push("/login");
+    this.props.history.push("/");
   };
 
   let marketingPages = ["https://bw-trip-split.github.io/Marketing-Page/", "https://cmruss.github.io/Marketing-Page/"];

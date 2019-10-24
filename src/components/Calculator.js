@@ -45,7 +45,7 @@ function Calculator(props) {
       return data.people[0].expenses[0].trip_id === props.trip_id;
     }
   });
-  console.log(data[0].people.length);
+  // console.log(data[0].people.length);
 
   const [totalCosts, setTotalCosts] = useState(null);
   const [addingToggle, setAddingToggle] = useState(true);
@@ -86,14 +86,17 @@ function Calculator(props) {
     createOwedList(evenPaymentt);
   };
 
-  let people = data[0].people.map(person => {
-    return {
-      name: person.person_name,
-      totalCosts: person.expenses.reduce((total, expense) => {
-        return total + parseFloat(expense.amount_paid);
-      }, 0)
-    };
-  });
+  //AVOID COMPILE ERROR; CHECK IF UNDEFINED
+
+    let people = data[0].people.map(person => {
+      return {
+        name: person.person_name,
+        totalCosts: person.expenses.reduce((total, expense) => {
+          return total + parseFloat(expense.amount_paid);
+        }, 0)
+      };
+    });
+  
 
   console.log("ep", evenPayment);
 
@@ -123,6 +126,8 @@ function Calculator(props) {
           </div>
 
           <div className="form-content">
+            
+            {console.log("People in Calculator",people)}
             <PeopleCList people={people} evenPayment={evenPayment} owed={owed} addingToggle={addingToggle} />
 
             {/* <Button onClick={() => props.setCalcToggle(false)}>Done</Button> */}

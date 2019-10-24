@@ -5,9 +5,11 @@ function PeopleCList(props){
     return(
         <div>
             {/* <h1>PeopleList</h1> */}
+            {console.log("PROPS.PEOPLE",props.people)}
             {props.people.map(person => {
                 return(
                     <div key = {Math.random()}>
+                        
                         <Person 
                             friend = {person} 
                             evenPayment = {props.evenPayment}

@@ -11,6 +11,7 @@ import {
     POSTTRIP_START, POSTTRIP_SUCCESS, POSTTRIP_FAILURE, 
     POSTEXPENSE_START, POSTEXPENSE_SUCCESS, POSTEXPENSE_FAILURE, 
     GETTRIPSBYUID_START, GETTRIPSBYUID_SUCCESS, GETTRIPSBYUID_FAILURE, 
+    DELETETRIP_START, DELETETRIP_SUCCESS, DELETETRIP_FAILURE 
     } from '../actions/actions';
 
 
@@ -216,6 +217,20 @@ export default function reducer (state = defaultState, action) {
             return {
                 ...state,
             }
+        //################################
+        //payload: none
+        case DELETETRIP_START:
+            return {
+                ...state,
+            }
+        case DELETETRIP_SUCCESS:
+            return {
+                ...state,
+            }           
+        case DELETETRIP_FAILURE:
+            return {
+                ...state,
+                } 
         //################################
         //payload: none
         case POSTEXPENSE_START:

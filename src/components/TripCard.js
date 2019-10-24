@@ -1,8 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Card } from "semantic-ui-react";
 import "../styles/TripCard.scss";
+import { deleteTrip } from "../actions/actions";
 
-export function CurrentTripCard(props) {
+function CurrentTripCard(props) {
 
   const totalExpense = trip => {
     let total = 0;
@@ -21,11 +23,14 @@ export function CurrentTripCard(props) {
   }
 
   const deleteTrip = e => {
-    console.log("DELETE TRIP EVENT", e);
+    console.log("DELETE TRIP EVENT", props.trip.trip_id);
     e.stopPropagation();
     e.preventDefault();
 
     console.log("DELETE TRIP BUTTON CLICKED");
+
+    console.log("delete props", props);
+    props.deleteTrip(props.trip.trip_id);
   }
 
   console.log("TRIP CARD DATA", props.trip);
@@ -77,3 +82,11 @@ export function PastTripCard(props) {
     </div>
   );
 }
+
+function mapStateToProps() {
+  return {};
+}
+export default connect(
+  mapStateToProps,
+  { deleteTrip }
+)(CurrentTripCard);

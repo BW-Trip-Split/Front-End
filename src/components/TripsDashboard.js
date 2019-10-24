@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, Route } from "react-router-dom";
-import { CurrentTripCard, PastTripCard } from "./TripCard";
+// import { CurrentTripCard, PastTripCard } from "./TripCard";
+import  CurrentTripCard from "./TripCard";
 import { getTripsByUserId } from "../actions/actions.js";
 import "../styles/TripsDashboard.scss";
 import { Button } from "./Buttons.js";
