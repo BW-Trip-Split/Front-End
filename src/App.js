@@ -14,6 +14,7 @@ import {
   getTrips,
   postTrip,
   getTrip,
+  deleteTrip,
   postExpense,
   getTripsByUserId
 } from "./actions/actions";
@@ -116,7 +117,7 @@ function App(props) {
     <div className="App">
       {/* <h1>Never Worry About Not Getting Paid Back</h1> */}
 
-<Navigation/>
+      <Navigation />
       <Route path="/login" component={LoginForm} />
       <Route path="/trip/:id" component={Trip} />
       <Route path="/people-form" component={PeopleForm} />
@@ -144,6 +145,7 @@ export default connect(
     getTrips,
     postTrip,
     getTrip,
+    deleteTrip,
     postExpense,
     getTripsByUserId
   }

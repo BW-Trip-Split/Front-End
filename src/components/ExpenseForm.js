@@ -89,7 +89,7 @@ function ExpenseForm(props) {
 
           {props.trip.people[0] ? (
             <Form.Field className="expense-input">
-              <label>{props.trip.people[0].people_name}</label>
+              <label>{props.trip.people[0].people_name} owes:</label>
               <input
                 placeholder="Amount"
                 value={amountsPaid.amount_paid1}
@@ -104,7 +104,7 @@ function ExpenseForm(props) {
 
           {props.trip.people[1] ? (
             <Form.Field className="expense-input">
-              <label>{props.trip.people[1].people_name}</label>
+              <label>{props.trip.people[1].people_name} owes:</label>
               <input
                 placeholder="Amount"
                 value={amountsPaid.amount_paid2}
@@ -119,7 +119,7 @@ function ExpenseForm(props) {
 
           {props.trip.people[2] ? (
             <Form.Field className="expense-input">
-              <label>{props.trip.people[2].people_name}</label>
+              <label>{props.trip.people[2].people_name} owes:</label>
               <input
                 placeholder="Amount"
                 value={amountsPaid.amount_paid3}
@@ -134,7 +134,7 @@ function ExpenseForm(props) {
 
           {props.trip.people[3] ? (
             <Form.Field className="expense-input">
-              <label>{props.trip.people[3].people_name}</label>
+              <label>{props.trip.people[3].people_name} owes:</label>
               <input
                 placeholder="Amount"
                 value={amountsPaid.amount_paid4}
@@ -149,7 +149,7 @@ function ExpenseForm(props) {
 
           {props.trip.people[4] ? (
             <Form.Field className="expense-input">
-              <label>{props.trip.people[4].people_name}</label>
+              <label>{props.trip.people[4].people_name} owes:</label>
               <input
                 placeholder="Amount"
                 value={amountsPaid.amount_paid5}

@@ -13,8 +13,10 @@ function PeopleCList(props){
                         <Person 
                             friend = {person} 
                             evenPayment = {props.evenPayment}
+                            perPersonPayment = {props.perPersonPayment}
                             owed = {props.owed}
-                            addingToggle = {props.addingToggle}
+                            addingToggle = {props.addingToggle} 
+                            ifEven = {props.ifEven}                           
                         />
                     </div>
                 )
