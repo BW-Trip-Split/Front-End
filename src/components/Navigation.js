@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 
 //https://tripsplitr.herokuapp.com/
@@ -75,12 +75,14 @@ const LogoutLink = styled.div`
   }
 `;
 
-function Navigation() {
+function Navigation(props) {
+
+  
   const logOut = e => {
     e.preventDefault();
     localStorage.clear();
-    window.location.reload();
-    this.props.history.push("/");
+    // window.location.reload();
+    window.location = "/login";
   };
 
   let marketingPages = ["https://bw-trip-split.github.io/Marketing-Page/", "https://cmruss.github.io/Marketing-Page/"];
