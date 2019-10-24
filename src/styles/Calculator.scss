@@ -1,0 +1,83 @@
+@import "./variables.scss";
+
+.calc {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+
+  .calc-inner {
+    position: absolute;
+    left: 15%;
+    right: 15%;
+    top: 10%;
+    bottom: 10%;
+    margin: auto;
+    padding: 1%;
+    border-radius: 4px;
+    background: white;
+
+    @media (max-width: 500px) {
+      left: 5%;
+      right: 5%;
+      top: 10%;
+      bottom: 10%;
+    }
+
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    h3 {
+      text-align: center;
+      margin: 0;
+      font-weight: 600;
+      font-size: 1.4rem;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .form-top {
+    position: absolute;
+    top: 20px;
+  }
+
+  .form-content {
+
+    width: 100%;
+    button {
+      margin-top: 20px;
+    }
+  }
+
+  .calc-form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    .field {
+    }
+
+    .friends {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      align-items: center;
+
+      .field {
+        margin: 0.25rem 0.25rem;
+      }
+    }
+  }
+}
